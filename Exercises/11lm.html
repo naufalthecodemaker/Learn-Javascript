@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11lm</title>
+  </head>
+
+  <body>
+    <script>
+      function minMax(nums){
+        let minMaxNum = {min: null, max: null};
+        for(let i = 0 ; i < nums.length; i++){
+          if((minMaxNum.min == null) || (minMaxNum.max == nums[i])){
+            minMaxNum.min = nums[i];
+            minMaxNum.max = nums[i];
+          } else if(minMaxNum.min < nums[i]){
+            minMaxNum.min = minMaxNum.min;
+            minMaxNum.max = nums[i];
+          } else if(minMaxNum.min >= nums[i]){
+            minMaxNum.max = minMaxNum.min;
+            minMaxNum.min = nums[i];
+          }
+        }
+        return minMaxNum;
+      }
+
+      console.log(minMax([1,-3,5]));
+      console.log(minMax([-2,3,-5,7,10]));
+      console.log(minMax([]));
+      console.log(minMax([3]));
+    </script>
+  </body>
+</html>

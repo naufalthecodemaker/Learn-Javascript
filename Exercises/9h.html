@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9h</title>
+  </head>
+
+  <body>
+    <input class="input-text" onkeyup="
+      keyUp(event);
+      ">
+    <p class="js-text"></p>
+
+    <script>
+      function keyUp(event){
+        const text = document.querySelector('.input-text').value
+        document.querySelector('.js-text')
+          .innerHTML = text;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Fix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      
+      body {
+        min-height: 100vh;
+        background-image: url('images/bg-math.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .overall
+      {
+        display: grid;
+        place-items: center;
+        padding-top: 20px;
+      }
+
+      .title{
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 34px;
+        background-color: rgb(46, 182, 216);
+        width: 302px;
+        height: 60px;
+        border-radius: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      
+      .background
+      {
+        background-color: rgb(46, 182, 216);
+        width: 100%;
+        max-width: 307px;
+        border-radius: 20px;
+        padding: 10px 0;
+        box-sizing: border-box;
+        margin-top: 10px;
+        padding-top: 20px;
+      }
+
+      .calculator
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .buttons button
+      {
+        height: 50px;
+        width: 50px;
+        border-radius: 25px;
+        border: none;
+        background-color: rgb(227, 226, 226);
+        cursor: pointer;
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .buttons button:hover
+      {
+        opacity: 0.7;
+      }
+
+      .buttons button:active
+      {
+        background-color: aquamarine;
+      }
+
+      .js-display-calculation
+      {
+        font-size: 20px;
+        border-radius: 20px;
+        border: solid;
+        border-color: rgb(46, 182, 216);
+        border-width: 4px;
+        width: 294px;
+        height: 40px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="overall">
+      <p class="title">Naubila's calculator</p>
+      <input class="js-display-calculation" id="inputAngel">
+
+      <div class="background">
+        <div class="calculator">
+          <div class="buttons">
+            <button onclick="
+              calculation = '';
+              document.querySelector('.js-display-calculation')
+                .value = ``;
+              localStorage.setItem('calculation', calculation);
+            ">C</button>
+
+            <button onclick="
+              updateCalculation('(');
+            ">(</button>
+
+            <button onclick="
+              updateCalculation(')');
+            ">)</button>
+
+            <button onclick="
+              updateCalculation(' / 100 ');
+            ">%</button>  
+            
+            <button onclick="
+              updateCalculation('sin(')
+            ">sin</button> 
+          </div>
+
+          <div class="buttons">
+            <button onclick="
+              updateCalculation(7);
+            ">7</button>
+
+            <button onclick="
+              updateCalculation(8);
+            ">8</button>
+
+            <button onclick="
+              updateCalculation(9);
+            ">9</button>
+
+            <button onclick="
+              updateCalculation(' * ');
+            ">x</button>
+
+            <button onclick="
+              updateCalculation('cos(');
+            ">cos</button> 
+          </div>
+
+          <div class="buttons">
+            <button onclick="
+              updateCalculation(4);
+            ">4</button>
+
+            <button onclick="
+              updateCalculation(5);
+            ">5</button>
+
+            <button onclick="
+              updateCalculation(6);
+            ">6</button>
+
+            <button onclick="
+              updateCalculation(' - ');
+            ">-</button>
+
+            <button onclick="
+              updateCalculation('tan(');
+            ">tan</button> 
+          </div>
+
+          <div class="buttons">
+            <button onclick="
+              updateCalculation(1);
+            ">1</button>
+
+            <button onclick="
+              updateCalculation(2);
+            ">2</button>
+
+            <button onclick="
+              updateCalculation(3);
+            ">3</button>
+
+            <button onclick="
+              updateCalculation(' + ');
+            ">+</button>
+
+            <button onclick="
+              updateCalculation('Math.sqrt(');
+            "><i class="fa-solid fa-square-root-variable" style="margin-right: 3px;"></i>
+            </button> 
+          </div>
+
+          <div class="buttons">
+            <button onclick="
+              calculation = evaluateCalculation(calculation);
+              document.querySelector('.js-display-calculation')
+                .value = calculation;
+              localStorage.setItem('calculation', calculation);
+            ">=</button>
+
+            <button onclick="
+              updateCalculation(0);
+            ">0</button>
+
+            <button onclick="
+              updateCalculation('.');
+            ">.</button>
+
+            <button onclick="
+              updateCalculation(` / `);
+            ">/</button>
+
+            <button onclick="
+              calculation = calculation.slice(0, -1);
+              document.querySelector('.js-display-calculation').value = calculation;
+            "><i class="fa-solid fa-backspace" style="margin-right: 2px; margin-top: 2px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let calculation = localStorage.getItem('calculation') || '';
+      document.querySelector('.js-display-calculation')
+        .value = calculation;
+
+      function updateCalculation(button){
+        calculation += button;
+        document.querySelector('.js-display-calculation')
+          .value = calculation;
+        localStorage.setItem('calculation', calculation);
+      }
+
+      function evaluateCalculation(expression) {
+      try {
+        expression = expression.replace(/sin\(([^)]+)\)/g, (_, angle) => {
+          return Math.sin(toRadians(eval(angle)));
+        });
+
+        expression = expression.replace(/cos\(([^)]+)\)/g, (_, angle) => {
+          return Math.cos(toRadians(eval(angle)));
+        });
+
+        expression = expression.replace(/tan\(([^)]+)\)/g, (_, angle) => {
+          return Math.tan(toRadians(eval(angle)));
+        });
+
+        return Math.round(eval(expression) * 1000000000) / 1000000000; // bulatkan sampai 9 digit
+      } catch (e) {
+        return 'Error';
+      }
+    }
+
+    function toRadians(deg) {
+      return deg * Math.PI / 180;
+    }
+    </script>  
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9abc</title>
+  </head>
+
+  <body>
+    <button>9a</button>
+    <button class="js-second-button">9b</button>
+
+    <div style="display: block; margin-top: 10px;">
+      <button onclick="
+        choose('heads');
+      ">heads</button>
+      
+      <button onclick="
+        choose('tails');
+      ">tails</button>
+    </div>
+  
+    <p class="player-choose"></p>
+
+    <script>
+      console.log(document.querySelector('button'));
+      
+      document.querySelector('.js-second-button')
+        .innerHTML = '9b done!';
+
+      function choose(move){
+        document.querySelector('.player-choose')
+          .innerHTML = `You chose: ${move}`;
+      }
+    </script>
+  </body>
+</html>

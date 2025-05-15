@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+    <style>
+      .title{
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+      
+      .js-subscribe-button{
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 20px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .is-subscribed{
+        background-color: rgb(235, 235, 235);
+        color: black;
+      }
+
+      .js-cost-input{
+        padding-left: 10px;
+        padding-top: 9.5px;
+        padding-bottom: 10.5px;
+        font-size: 15.5px;
+      }
+
+      .js-calculate-button{
+        padding: 12px 13px;
+        background-color: rgb(4, 129, 4);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .js-total-cost{
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="title">YouTube Subscribe Button</p>
+    <button onclick="
+      subscribe();
+    " class="js-subscribe-button">
+      Subscribe
+    </button>
+
+    <p class="title" style="margin-top: 50px;">Amazon Shipping Calculator</p>
+    <p class="title">Orders under $40 = +$10 shipping.</p>
+    <p class="title">Orders over $40 = FREE shipping.</p>
+    <input class="js-cost-input" placeholder="Cost of order" onkeydown="
+      handleCostKeyDown(event);
+    ">
+    <button class="js-calculate-button" onclick="
+      calculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <div style="margin-top: 90px;">
+      <p class="title" style="margin-top: 50px;">Rock Paper Scissors</p>
+      <a class="title" href="Rock Paper Game/index.html">Click here</a>
+    </div>
+    
+    <script>
+      function subscribe(){
+        const buttonElement = document.querySelector('.js-subscribe-button');
+        if(buttonElement.innerText === 'Subscribe'){
+          buttonElement.innerHTML = 'Subscribed';
+          buttonElement.classList.add('is-subscribed');
+        } else{
+          buttonElement.innerHTML = 'Subscribe';
+          buttonElement.classList.remove('is-subscribed');
+        }
+      }
+
+      function handleCostKeyDown(event){
+        console.log(event.key); // event adalah objek, dengan properti key
+                                // key ==> apa aja yg diketik di inputnya / dipencet di keyboard
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal(){
+        const inputElement = document.querySelector('.js-cost-input');
+        let cost = Number(inputElement.value); // .value buat dapetin isi dari input teksnya (bertipe string)
+                                              // function Number() ==> konvert string ke number
+        if(cost < 40){
+          cost += 10;
+        } 
+
+        document.querySelector('.js-total-cost')
+          .innerHTML = `$${cost}`;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booleans</title>
+  </head>
+
+  <body>
+    <script>
+      //buat bikin booleans, ketik true sama false aja
+      true
+      false
+
+      console.log(3 > 5);
+      console.log(5 == '5.00'); // dianggep bener karena tanda '=='
+                               //  mengubah kedua tipe data menjadi sama
+    
+      console.log(5 === '5.00'); // tanda equal yang benar --> ===
+    
+      if(true){
+        console.log('Kamu benar!');
+      } else{
+        console.log('else');
+      }
+      
+      const age = 15;
+      if(age >= 16){
+        console.log('U can drive');
+      } else if(age >= 14){
+        console.log('Almost there!');
+      } else{
+        console.log('U cannot drive');
+      }
+      
+      if(5){
+        console.log('Truthy');
+      } 
+
+      const cartQuantity = 5;
+      // kalo cartQuantity nya 0 --> false
+      if(cartQuantity){
+        console.log('csrt has products!');
+      }
+
+      console.log('string' / 5); // hasilnya NaN (not a number)
+
+      let variable1;
+      console.log(variable1); // hasilnya undefined
+    
+      // shorcut if else (bisa dimasukin ke variable)
+      const result = true ? 'truthy' : 'falsy';
+      console.log(result);
+      // sama aja kayak
+      if(true){
+        'truthy'
+      } else{
+        'falsy'
+      }
+
+      // guard operator &&
+      false && console.log('hello');
+
+      const message = 5 && 'hello';
+      console.log(message);
+
+      // operator OR buat set default operator
+      const currency = undefined || 'USD';
+      console.log(currency);
+    </script>
+  </body>
+</html>

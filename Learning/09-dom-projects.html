@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Projects</title>
+  </head>
+
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="
+      subscribe();
+    " class="js-subscribe-button">
+      Subscribe
+    </button>
+
+    <p style="margin-top: 50px;">Rock Paper Scissors</p>
+    <a href="09-rock-game.html">Click here</a>
+
+    <p style="margin-top: 50px;">Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input class="js-cost-input" placeholder="Cost of order" onkeydown="
+      handleCostKeyDown(event);
+    ">
+    <button onclick="
+      calculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
+    
+    <script>
+      function subscribe(){
+        const buttonElement = document.querySelector('.js-subscribe-button');
+        if(buttonElement.innerText === 'Subscribe'){
+          buttonElement.innerHTML = 'Subscribed';
+        } else{
+          buttonElement.innerHTML = 'Subscribe';
+        }
+      }
+
+      function handleCostKeyDown(event){
+        console.log(event.key); // event adalah objek, dengan properti key
+                                // key ==> apa aja yg diketik di inputnya / dipencet di keyboard
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal(){
+        const inputElement = document.querySelector('.js-cost-input');
+        let cost = Number(inputElement.value); // .value buat dapetin isi dari input teksnya (bertipe string)
+                                              // function Number() ==> konvert string ke number
+        if(cost < 40){
+          cost += 10;
+        } 
+
+        document.querySelector('.js-total-cost')
+          .innerHTML = `$${cost}`;
+      }
+    </script>
+  </body>
+</html>

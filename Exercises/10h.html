@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10h</title>
+    <style>
+      .title{
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+
+      .js-cost-input{
+        padding-left: 10px;
+        padding-top: 9.5px;
+        padding-bottom: 10.5px;
+        font-size: 15.5px;
+      }
+
+      .js-calculate-button{
+        padding: 12px 13px;
+        background-color: rgb(4, 129, 4);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .js-total-cost{
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+
+      .is-error{
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p class="title">Amazon Shipping Calculator</p>
+    <p class="title">Orders under $40 = +$10 shipping.</p>
+    <p class="title">Orders over $40 = FREE shipping.</p>
+    <input class="js-cost-input" placeholder="Cost of order" onkeydown="
+      handleCostKeyDown(event);
+    ">
+    <button class="js-calculate-button" onclick="
+      calculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script>
+      function handleCostKeyDown(event){
+        console.log(event.key); // event adalah objek, dengan properti key
+                                // key ==> apa aja yg diketik di inputnya / dipencet di keyboard
+        if(event.key === 'Enter'){
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal(){
+        const inputElement = document.querySelector('.js-cost-input');
+        let cost = Number(inputElement.value); // .value buat dapetin isi dari input teksnya (bertipe string)
+                                              // function Number() ==> konvert string ke number
+        if(cost < 40 && cost >= 0){
+          cost += 10;
+          document.querySelector('.js-total-cost')
+          .innerHTML = `$${cost}`;
+          document.querySelector('.js-total-cost')
+            .classList.remove('is-error');
+        } else if(cost >= 40){
+          cost;
+          document.querySelector('.js-total-cost')
+          .innerHTML = `$${cost}`;
+          document.querySelector('.js-total-cost')
+            .classList.remove('is-error');
+        } else{
+          document.querySelector('.js-total-cost')
+          .innerHTML = `Error: cost cannot be less than $0`;
+          document.querySelector('.js-total-cost')
+            .classList.add('is-error');
+        }
+      }
+    </script>
+  </body>
+</html>

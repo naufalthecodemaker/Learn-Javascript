@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+  </head>
+
+  <body>
+    <button>hello</button>
+    <button class="js-button">Second button</button>
+
+    <script>
+      console.log(document.querySelector('button').innerHTML); // narik element button pertama di html, trs ditaro di javascript
+      document.querySelector('button')
+        .innerHTML = 'changed'; // ngubah isi buttonnya
+      
+      const buttonElement = document.querySelector('.js-button'); // narik element dgn class js-button
+      console.log(buttonElement);
+      /*
+      console.log(document.title); // judul web
+      console.log(document.body); // body web
+      
+      console.log(document.body.innerHTML); // mengontrol seluruh body di html
+      document.body.innerHTML = '<button>Good Job</button>';
+      */
+
+      /*
+      document.body.innerHTML = 'hello'; // objek dokumen punya properti body
+                                        //  objek body punya properti innerHTML
+      document.title = 'Good job'; // objek document punya properti title
+      // objek document dapat mengubah tampilan web
+    
+      method ==> fungsi yg disimpen di dalam objek
+      */
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9def</title>
+  </head>
+
+  <body>
+    <input class="js-input-username" placeholder="Enter your name" onkeydown="
+      enterSubmit(event);
+    ">
+    <button onclick="
+      displayName();
+    ">Submit</button>
+    <p class="js-confirm-name"></p>
+
+    <script>
+      function displayName(){
+        let name = document.querySelector('.js-input-username').value;
+        document.querySelector('.js-confirm-name')
+          .innerHTML = `Your name is: ${name}`;
+      }
+
+      function enterSubmit(event){
+        if(event.key === 'Enter'){
+          displayName();
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9i</title>
+    <style>
+      .show{
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .remove{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Cart Quantity</p>
+
+    <button class="show" onclick="
+      console.log(`Cart quantity: ${cartQuantity}`); // pake tanda ` ` buat masukin nilai ke string
+    ">Show Quantity</button>
+
+    <button onclick="
+      updateCartQuantity(1);
+    ">Add to Cart</button>
+
+    <button onclick="
+      updateCartQuantity(2);
+    "> +2 </button>
+
+    <button onclick="
+      updateCartQuantity(3);
+    "> +3 </button>
+    
+    <button onclick="
+      updateCartQuantity(4);
+    "> +4 </button>
+
+    <button onclick="
+      updateCartQuantity(5);
+    "> +5 </button>
+
+    <div class="remove">
+      <button onclick="
+        updateCartQuantity(-1);
+      "> Remove from Cart </button>
+      
+      <button onclick="
+        updateCartQuantity(-2);
+      "> -2 </button>
+
+      <button onclick="
+        updateCartQuantity(-3);
+      "> -3 </button>
+    </div>
+  
+    <button onclick="
+      cartQuantity = 0;
+      document.querySelector('.js-cart-quantity')
+        .innerHTML = `Cart was reset! Cart quantity: ${cartQuantity}`;
+    ">Reset Cart</button>
+
+    <p class="js-cart-quantity"></p>
+
+    <script>
+      let cartQuantity = 0;
+
+      function updateCartQuantity(amount){
+        if(cartQuantity + amount > 10){
+          alert('The cart is full');
+        } else if(cartQuantity + amount < 0){
+          alert('Not enough items in the cart');
+        } else{
+          cartQuantity += amount;
+          document.querySelector('.js-cart-quantity')
+            .innerHTML = `Cart quantity: ${cartQuantity}`;
+        }
+      }
+    </script>
+  </body>
+</html>

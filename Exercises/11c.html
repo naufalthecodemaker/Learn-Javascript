@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11c</title>
+  </head>
+
+  <body>
+    <script>
+      function arraySwap(array){
+        array.push(array[0]);
+        array[0] = array[array.length - 2];
+        array.splice(array.length - 2, 1);
+        console.log(array);
+      }
+
+      arraySwap([1, 20, 22, 24, 5]);
+      arraySwap(['hi', 'hello', 'good']);
+    </script>
+  </body>
+</html>

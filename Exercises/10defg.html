@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10defg</title>
+    <style>
+      .toggle-button{
+        border: none;
+        background-color: lightgray;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .is-toggled{
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="toggle-button gaming-button" onclick="transition1()">Gaming</button>
+    <button class="toggle-button music-button" onclick="transition2()">Music</button>
+    <button class="toggle-button tech-button" onclick="transition3()">Tech</button>
+
+    <script>
+      function transition1(){
+        const buttonElement1 = document.querySelector('.gaming-button');
+        const buttonElement2 = document.querySelector('.music-button');
+        const buttonElement3 = document.querySelector('.tech-button');
+        
+        if(!buttonElement1.classList.contains('is-toggled')){
+          buttonElement1.classList.add('is-toggled');
+          buttonElement2.classList.remove('is-toggled');
+          buttonElement3.classList.remove('is-toggled');
+        } else if(buttonElement1.classList.contains('.is-toggled')){
+          buttonElement1.classList.remove('is-toggled');
+        }
+      }
+
+      function transition2(){
+        const buttonElement1 = document.querySelector('.gaming-button');
+        const buttonElement2 = document.querySelector('.music-button');
+        const buttonElement3 = document.querySelector('.tech-button');
+        
+        if(!buttonElement2.classList.contains('is-toggled')){
+          buttonElement2.classList.add('is-toggled');
+          buttonElement1.classList.remove('is-toggled');
+          buttonElement3.classList.remove('is-toggled');
+        } else if(buttonElement2.classList.contains('.is-toggled')){
+          buttonElement2.classList.remove('is-toggled');
+        }
+      }
+
+      function transition3(){
+        const buttonElement1 = document.querySelector('.gaming-button');
+        const buttonElement2 = document.querySelector('.music-button');
+        const buttonElement3 = document.querySelector('.tech-button');
+        
+        if(!buttonElement3.classList.contains('is-toggled')){
+          buttonElement3.classList.add('is-toggled');
+          buttonElement1.classList.remove('is-toggled');
+          buttonElement2.classList.remove('is-toggled');
+        } else if(buttonElement3.classList.contains('.is-toggled')){
+          buttonElement3.classList.remove('is-toggled');
+        }
+      }
+    </script>
+  </body>
+</html>
