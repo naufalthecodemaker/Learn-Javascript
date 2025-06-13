@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+      .todo-grid{
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 210px 192px 94px;
+        row-gap: 10px;
+        align-items: center;
+      }
+      
+      .delete-button{
+        background-color: darkred;
+        color: white;
+        border: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-left: 3px;
+        width: 93px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p style="font-family: Arial;">Todo List Practice 1</p>
+    <input class="js-name-input-1" placeholder="Todo name">
+    <button onclick="
+      addTodo1();
+    ">Add</button>
+
+    <p style="font-family: Arial; margin-top: 50px;">Todo List Practice 2</p>
+    <input class="js-name-input-2" placeholder="Todo name">
+    <button onclick="
+      addTodo2();
+    ">Add</button>
+    <div class="js-list2" style="font-family: Arial;"></div>
+
+    <p style="font-family: Arial; margin-top: 50px;">Todo List</p>
+    <input class="js-name-input" placeholder="Todo name" style="height: 30px; padding-right: 30px; margin-right: 8px;">
+    <input class="js-due-date-input" type="date" style="height: 32px; margin-right: 8px;">
+    <button class="js-add-todo-button" style="background-color: green; color: white; border: none; padding: 10px 35px; cursor: pointer; font-family: Arial, Helvetica, sans-serif;">Add</button>
+    <div class="js-todo-list todo-grid" style="font-family: Arial;"></div>
+
+    <script>
+      const todoList1 = [];
+      const todoList2 = [];
+      const todoList = [];
+
+      function addTodo1(){
+        const inputElement1 = document.querySelector('.js-name-input-1');
+        const name1 = inputElement1.value;
+        todoList1.push(name1); // buat push value ke array
+        console.log(todoList1);
+
+        inputElement1.value = ''; // input kosong lagi stlh klik tombol add
+      }
+
+      function addTodo2(){
+        const inputElement2 = document.querySelector('.js-name-input-2');
+        const name2 = inputElement2.value;
+        todoList2.push(name2); // buat push value ke array
+        
+        let todoListHTML = '';
+
+        todoList2.forEach(function(todo2, index){
+          const html = `<p>${todo2}</p>`; // generate html
+          todoListHTML += html;
+        });
+
+        document.querySelector('.js-list2')
+          .innerHTML = todoListHTML;
+
+        inputElement2.value = ''; // input kosong lagi stlh klik tombol add
+      }
+
+      function renderTodoList(){
+        let todoListHTML = '';
+
+        todoList.forEach((todoObject, index) => {
+          // const name = todoObject.name;
+          // const dueDate = todoObject.dueDate;
+          const {name, dueDate} = todoObject;
+          const html = `
+            <div>${name}</div>
+            <div>${dueDate}</div>
+            <button class="delete-button js-delete-button">Delete</button>      
+          `;
+          todoListHTML += html;
+        });
+        
+        document.querySelector('.js-todo-list')
+          .innerHTML = todoListHTML; 
+
+        document.querySelectorAll('.js-delete-button') // give us all the elements that have this class
+          .forEach((deleteButton, index) => {
+            deleteButton.addEventListener('click', () => {
+              todoList.splice(index, 1);
+              renderTodoList();
+            })
+          });
+      }
+
+      function addTodoFix(){
+        const inputElement = document.querySelector('.js-name-input');
+        const name = inputElement.value;
+        
+        const dateInputElement = document.querySelector('.js-due-date-input');
+        const dueDate = dateInputElement.value;
+
+        // todoList.push({name: name, dueDate: dueDate});
+        todoList.push({name, dueDate}); // shorcut, karena nama property dan nama variablenya sama
+        
+        inputElement.value = '';
+        dateInputElement.value = '';
+
+        renderTodoList();
+      }
+
+      document.querySelector('.js-add-todo-button')
+        .addEventListener('click', () => {
+          addTodoFix();
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12cd</title>
+  </head>
+
+  <body>
+    <button class="js-button">Start</button>
+
+    <script>
+      function updateButton(){
+        document.querySelector('.js-button').innerHTML = 'Loading...';
+        setTimeout(() => {
+          document.querySelector('.js-button').innerHTML = 'Finished!';
+        }, 1000);
+      }
+
+      document.querySelector('.js-button')
+        .addEventListener('click', () => {updateButton()});
+    </script>
+  </body>
+</html>

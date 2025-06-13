@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function</title>
+  </head>
+
+  <body>
+    <button class="js-button">Click</button>
+    
+    <script>
+      /*
+      const buttonElement = document.querySelector('.js-button');
+      
+      // addEventListener bisa run code saat kita interact dengan element yang dipilih
+      // ada 2 parameter, event dan function yg mau dirun
+      // cara melihat event: on-click ==> event: click;
+
+      const eventListener = () => {
+        console.log('click');
+      };
+
+      buttonElement.addEventListener('click', eventListener); 
+
+      buttonElement.removeEventListener('click', eventListener);
+
+      buttonElement.addEventListener('click', () => {
+        console.log('click2');
+      }); 
+      */
+
+      /*
+      function greeting(){
+        console.log('hello');
+      }
+      greeting(); // calling a function
+
+      const num = 2;
+      const function1 = function(){ 
+        console.log('hello2');
+      }; // fungsi tanpa nama, karena sudah dimasukkan ke variable
+
+      console.log(function1);
+      console.log(typeof function1);
+      function1(); // pemanggilan fungsi dengan variable
+
+      const object1 = {
+        num: 2,
+        fungsi: function(){
+          console.log('hello3');
+        }
+      };
+      object1.fungsi(); // bisa juga dimasukin di objek
+
+      function display(parameter){
+        console.log(parameter);
+      }
+      display(2); // passing a value into a function
+
+      function run(parameter){
+        parameter();
+      }
+      run(function(){ // passing a function into a function
+        console.log('hello4');
+      });
+      */
+      
+      /*
+      setTimeout(function(){
+        console.log('timeout');
+        console.log('timeout2');
+      }, 3000); // di dalam tanda kurung, berisi function yg mau di run setelah waktu yg ditentukan
+                // parameter kedua, berapa lama nunggu functionnya agar dirun (milisecond)
+                // membuat kode menjadi asinkronus, yaitu tidak menunggu satu line untuk lanjut ke line berikutnya
+      
+      console.log('next line');
+    
+      setInterval(function(){
+        console.log('interval');
+      }, 3000); // akan terus run function setiap 3 detik
+
+      console.log('next line 2');
+      */
+
+      /*
+      [
+        'make dinner',
+        'wash dishes',
+        'watch youtube'
+      ].forEach((value, index) => {
+        if(value === 'wash dishes'){
+          return; // kegunaannya sama kyk continue pada for loop
+        }
+        console.log(index); 
+        console.log(value);
+      }); // pengganti for loop untuk looping array
+
+      const arrowFunction = (parameter, parameter2) => { // arrow function, fungsinya sama kyk function biasa
+        console.log('hello');
+        return 5;
+      };
+      arrowFunction();
+
+      // arrow function dipake buat function dalam function
+
+      const oneParam = param => { // parameter gaperlu pake kurung
+        console.log(param + 1);
+      };
+      oneParam(2);
+
+      const oneLine = () => 2 + 3; // gaperlu return, karena oneline
+      console.log(oneLine());
+
+      const object2 = {
+        method: () => {
+
+        }, 
+        method(){ // shorcut dari yg arrow
+
+        }
+      };
+      */
+
+      console.log([1, -3, 5].filter((value, index) => { 
+        /*
+        if(value >= 0){
+          return true;
+        }else{
+          return false;
+        } 
+        */
+        return value >= 0;
+      }));
+      // .filter() -> membuat array baru, kemudian return true ->  naro value di array baru
+                                            // return false -> value ga ditaro di array baru
+
+      console.log([1, 1, 3].map((value, index) => 
+        {
+          return value * 2;
+        }
+      ));
+      // .map() -> membuat array baru, kemudian apa saja yg direturn --> ditaro di array baru
+
+      // shorcut arrow function:
+      console.log([1, 1, 3].map(value => value * 2));
+</script>
+  </body>
+</html>
