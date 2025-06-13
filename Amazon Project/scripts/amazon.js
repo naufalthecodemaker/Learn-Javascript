@@ -84,15 +84,41 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+          data-product-id="${product.id}"> 
             Add to Cart
           </button>
     </div>
-  `;
+  `; // tambahin data atttribute buat narik informasi / data ke sebuah elemen HTML
 });
-
-console.log(productsHTML);
 
 // Last Step ==> Put it on the Web Page (using the DOM)
 document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
+
+// Make the button interactive
+document.querySelectorAll('.js-add-to-cart')
+  .forEach((button) => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
+                                                      // dari product-name, ditulis disini jadi .productName
+      
+      let matchingItem;
+      cart.forEach((item) => {
+        if(productId === item.productId){
+          matchingItem = item;
+        } 
+      });
+
+      if(matchingItem){
+        matchingItem.quantity++;
+      } else{
+        cart.push({
+          productId: productId,
+          quantity: 1
+        });
+      }
+
+      console.log(cart);
+    })
+  });
