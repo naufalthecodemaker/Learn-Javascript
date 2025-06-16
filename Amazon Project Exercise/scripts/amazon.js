@@ -100,7 +100,7 @@ document.querySelector('.js-products-grid')
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
-      const productId = button.dataset.productId; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
+      const {productId} = button.dataset; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
                                                       // dari product-name, ditulis disini jadi .productName
       
       let matchingItem;

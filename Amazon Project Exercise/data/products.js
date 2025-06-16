@@ -656,5 +656,31 @@ const products = [
       "apparel",
       "mens"
     ]
+  }, 
+  {
+    id: "id1",
+    image: "images/products/umbrella.jpg",
+    name: "Magic Umbrella with Fly Feature",
+    rating: {
+      stars: 5,
+      count: 10000
+    },
+    priceCents: 10000,
+    keywords: [
+      "magic",
+      "umbrella",
+      "tool",
+      "wet"
+    ]
+  }, 
+  {
+    id: "id2",
+    image: "images/products/backpack.jpg",
+    name: "Black Backpack with Bomb Inside",
+    rating: {
+      stars: 4.5,
+      count: 123
+    },
+    priceCents: 12500
   }
 ];
