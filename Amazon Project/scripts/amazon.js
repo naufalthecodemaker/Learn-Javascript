@@ -34,7 +34,7 @@ const products = [{
   priceCents: 1899
 }];
 */
-import {cart} from "../data/cart.js"; // titik-titik ==> dua step menuju folder utama
+import {cart, addToCart} from "../data/cart.js"; // titik-titik ==> dua step menuju folder utama
 import {products} from "../data/products.js";
 
 let productsHTML = '';
@@ -99,35 +99,24 @@ document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
 // Make the button interactive
+// lihat function addToCart
+
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+}
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
-                                                      // dari product-name, ditulis disini jadi .productName
-      
-      let matchingItem;
-      cart.forEach((item) => {
-        if(productId === item.productId){
-          matchingItem = item;
-        } 
-      });
-
-      if(matchingItem){
-        matchingItem.quantity++;
-      } else{
-        cart.push({
-          productId: productId,
-          quantity: 1
-        });
-      }
-
-      let cartQuantity = 0;
-
-      cart.forEach((item) => {
-        cartQuantity += item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+                                                      // dari product-name, ditulis disini jadi .productName                               
+      addToCart(productId);
+      updateCartQuantity();
     });
   });
