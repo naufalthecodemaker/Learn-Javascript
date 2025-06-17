@@ -35,6 +35,7 @@ const products = [{
 }];
 */
 import {cart} from "../data/cart.js"; // titik-titik ==> dua step menuju folder utama
+import {products} from "../data/products.js";
 
 let productsHTML = '';
 
