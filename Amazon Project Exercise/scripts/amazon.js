@@ -79,7 +79,7 @@ products.forEach((product) => {
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-to-cart-${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -99,6 +99,7 @@ document.querySelector('.js-products-grid')
 // Make the button interactive
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
+    let addedMessageTimeoutId;
     button.addEventListener('click', () => {
       const {productId} = button.dataset; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
                                                       // dari product-name, ditulis disini jadi .productName
@@ -113,7 +114,7 @@ document.querySelectorAll('.js-add-to-cart')
       const valueSelected = document.querySelector(`.js-quantity-selector-${button.dataset.productId}`).value;
 
       if(matchingItem){
-        matchingItem.quantity++;
+        matchingItem.quantity += Number(valueSelected);
       } else{
         cart.push({
           productId: productId,
@@ -129,5 +130,27 @@ document.querySelectorAll('.js-add-to-cart')
 
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
+
+      const addedMessage = document.querySelector(
+        `.js-added-to-cart-${productId}`
+      );
+
+      addedMessage.classList.add('added-to-cart-visible');
+      // buat add kelas baru di addedMessage 
+
+      setTimeout(() => {
+        // Check if a previous timeoutId exists. If it does,
+        // we will stop it.
+        if (addedMessageTimeoutId) {
+          clearTimeout(addedMessageTimeoutId);
+        }
+
+        const timeoutId = setTimeout(() => {
+          addedMessage.classList.remove('added-to-cart-visible');
+        }, 2000);
+
+        // Save the timeoutId so we can stop it later.
+        addedMessageTimeoutId = timeoutId;
+      });
     });
   });

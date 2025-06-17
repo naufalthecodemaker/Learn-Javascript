@@ -34,6 +34,7 @@ const products = [{
   priceCents: 1899
 }];
 */
+import {cart} from "../data/cart.js"; // titik-titik ==> dua step menuju folder utama
 
 let productsHTML = '';
 
