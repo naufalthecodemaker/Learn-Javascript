@@ -5,10 +5,9 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 // default export
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from "./paymentSummary.js";
 
-hello();
-
-// dari dayjs documentation
+// dari dayjs documentation (gaada hubungannya sama project amazon, cuma buat latian)
 const today = dayjs();
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
@@ -121,6 +120,8 @@ export function renderOrderSummary(){ // render -> display on the page
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
         container.remove(); // hilangin dari tampilan
+
+        renderPaymentSummary();
       });
     });
 
@@ -135,6 +136,8 @@ export function renderOrderSummary(){ // render -> display on the page
         */
         updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
+
+        renderPaymentSummary();
       });
     });
 }
