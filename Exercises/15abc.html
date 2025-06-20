@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15abc</title>
+  </head>
+
+  <body>
+    <script type="module">
+      import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+      
+      const today = dayjs();
+      const date = today.add(5, 'days');
+      console.log(date.format('MMMM D'));
+
+      const oneMonthAfterToday = today.add(1, 'month');
+      console.log(oneMonthAfterToday.format('MMMM D'));
+
+      const oneMonthBeforeToday = today.subtract(1, 'month');
+      console.log(oneMonthBeforeToday.format('MMMM D'));
+    </script>
+  </body>
+</html>
