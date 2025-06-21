@@ -1,3 +1,4 @@
 {
-  "liveServer.settings.multiRootWorkspaceName": "JavaScript"
+  "liveServer.settings.multiRootWorkspaceName": "JavaScript",
+  "git.ignoreLimitWarning": true
 }
