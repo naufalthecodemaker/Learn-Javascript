@@ -74,3 +74,10 @@ afterEach() => runs code after each test
 beforeAll() => runs code before all tests
 afterAll() => run code after all tests
 */ 
+
+/*
+Proses test:
+1. Make changes to code
+2. Re-run the tests
+3. Save to git
+*/
