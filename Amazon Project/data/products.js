@@ -60,6 +60,38 @@ class Clothing extends Product{ // Clothing is a specific type of Product (child
     `;
   }
 }
+ 
+// Built in Date class
+const date = new Date(); // current date
+console.log(date); 
+console.log(date.toLocaleTimeString()); // current time
+// ===================== tapi lebih sering pake external libraries DayJS
+
+// another thing about "this"
+// console.log(this); // hasilnya undefined
+
+/*
+const object2 = {
+  a: 2,
+  b: this.a
+};
+*/
+
+// inside function, this = undefined
+function logThis(){
+  console.log(this);
+}
+logThis();
+logThis.call('hello'); // .call ==> ubah value "this"
+
+this
+const object3 = {
+  method: () => { // arrow function don't change the value of "this" ==> sesuai sama value "this" diluar arrow function
+    console.log(this); 
+  }
+};
+object3.method();
+// =================================================================================
 
 export const products = [
   {
