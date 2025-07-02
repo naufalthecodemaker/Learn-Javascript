@@ -34,7 +34,7 @@ const products = [{
   priceCents: 1899
 }];
 */
-import {cart, addToCart} from "../data/cart.js"; // titik-titik ==> dua step menuju folder utama
+import {cart} from "../data/cart-class.js";
 import {products} from "../data/products.js";
 import {formatCurrency} from "./utils/money.js";
 
@@ -106,7 +106,7 @@ document.querySelector('.js-products-grid')
 
 function updateCartQuantity(){
   let cartQuantity = 0;
-  cart.forEach((cartItem) => {
+  cart.cartItems.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
   });
 
@@ -119,7 +119,7 @@ document.querySelectorAll('.js-add-to-cart')
     button.addEventListener('click', () => {
       const productId = button.dataset.productId; // dataset buat ngasih informasi yg ditarik ke sebuah element HTML
                                                       // dari product-name, ditulis disini jadi .productName                               
-      addToCart(productId);
+      cart.addToCart(productId);
       updateCartQuantity();
     });
   });
