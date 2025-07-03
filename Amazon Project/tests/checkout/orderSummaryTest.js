@@ -1,6 +1,7 @@
 import {renderOrderSummary} from "../../scripts/checkout/orderSummary.js";
 import {loadFromStorage, cart} from "../../data/cart.js";
 import {formatCurrency} from "../../../Amazon Project/scripts/utils/money.js";
+import {loadProducts} from "../../data/products.js";
 
 describe('test suite: renderOrderSummary function', () => {
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -9,6 +10,12 @@ describe('test suite: renderOrderSummary function', () => {
   const productName2 = 'Intermediate Size Basketball';
   const priceCents1 = 1090;
   const priceCents2 = 2095;
+
+  beforeAll((done) => {
+    loadProducts(() => {
+      done();
+    });
+  })
 
   beforeEach(() => { // before each hook yg akan run function sebelum melakukan test (menyusun set up code)
     spyOn(localStorage, 'setItem');
@@ -92,8 +99,6 @@ describe('test suite: renderOrderSummary function', () => {
 
     expect(cart.length).toEqual(1);
     expect(cart[0].productId).toEqual(productId2);
-
-    document.querySelector('.js-test-container').innerHTML = '';
   });
 
   it('updates the delivery option', () => {
