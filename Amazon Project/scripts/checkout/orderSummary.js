@@ -1,4 +1,4 @@
-import {cart} from "../../data/cart-class.js"; // named export
+import {cart, removeFromCart, updateDeliveryOption} from "../../data/cart.js"; // named export
 import {products, getProduct} from "../../data/products.js";
 import {formatCurrency} from "../utils/money.js";
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -16,7 +16,7 @@ console.log(deliveryDate.format('dddd, MMMM D'));
 export function renderOrderSummary(){ // render -> display on the page
   let cartSummaryHTML = '';
 
-  cart.cartItems.forEach((cartItem) => {
+  cart.forEach((cartItem) => {
     const productId = cartItem.productId;
     
     const matchingProduct= getProduct(productId);
@@ -112,7 +112,7 @@ export function renderOrderSummary(){ // render -> display on the page
     .forEach((link) => {
       link.addEventListener('click', () => {
         const productId = link.dataset.productId; // add id utk mengetahui barang mana yg akan diremove
-        cart.removeFromCart(productId);
+        removeFromCart(productId);
         
         renderCheckoutHeader();
         renderOrderSummary();
@@ -129,7 +129,7 @@ export function renderOrderSummary(){ // render -> display on the page
         const productId = element.dataset.productId;
         const deliveryId = element.dataset.deliveryOptionId;
         */
-        cart.updateDeliveryOption(productId, deliveryOptionId);
+        updateDeliveryOption(productId, deliveryOptionId);
         renderOrderSummary();
 
         renderPaymentSummary();

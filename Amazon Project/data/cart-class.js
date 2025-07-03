@@ -103,7 +103,7 @@ class Cart {
   }
 }
 
-export const cart = new Cart('cart-oop'); // gunakan new utk generate object using class
+const cart = new Cart('cart-oop'); // gunakan new utk generate object using class
 const businessCart = new Cart('cart-business');
 
 console.log(cart);
