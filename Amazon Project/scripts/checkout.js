@@ -8,14 +8,23 @@ import {loadCart} from "../data/cart.js";
 // import '../data/backend-practice.js';
 
 async function loadPage(){ // async makes a function return a promise
-  await loadProductsFetch(); // wait this line to finish and go to the next line
-  // only use await, when inside an async function and only be used with promises
+  try{ // bisa digunakan selain di async await
+    // throw 'error1'; 
+    
+    await loadProductsFetch(); // wait this line to finish and go to the next line
+    // only use await, whe n inside an async function and only be used with promises
 
-  const value = await new Promise((resolve) => {
-    loadProducts(() => {
-      resolve('value3'); // to go to next step after finishing running the asysc code
+    const value = await new Promise((resolve, reject) => {
+      // throw 'error2'; // create an error right now
+      loadProducts(() => {
+        // reject('error3'); // create an error in the future
+        resolve('value3'); // to go to next step after finishing running the asysc code
+      });
     });
-  });
+
+  } catch(error){ // error handling in async await
+    console.log('Unexpected error. Please try again later.');
+  }
 
   renderCheckoutHeader();
   renderOrderSummary();
