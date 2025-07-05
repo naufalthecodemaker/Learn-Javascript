@@ -7,7 +7,10 @@ xhr.addEventListener('load', () => {
 });
 
 // first parameter: type of HTTP message, like GET -> get some info from the backend
-// another type: POST, PUT, DELETE
+// another type: 
+// POST --> create something, lets us send data to the backend
+// PUT --> update something 
+// DELETE --> delete something
 // second parameter: where to send this HTTP message (in URL)
 xhr.open('GET', 'https://supersimplebackend.dev'); 
 xhr.send(); // send request
