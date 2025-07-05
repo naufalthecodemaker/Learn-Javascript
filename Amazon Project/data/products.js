@@ -118,8 +118,36 @@ object3.method();
 
 export let products = [];
 
+export function loadProductsFetch(){
+  // membuat Http request juga, tapi dengan promise
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response) => {
+    return response.json();
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => { // map => loop di array => return di array baru
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      } else if(productDetails.type === 'appliance'){
+        return new Appliance(productDetails);
+      }
+      return new Product(productDetails); // new ==> create object in a class
+    });
+
+    console.log('load products');
+  }); 
+
+  return promise;
+}
+
+/*
+loadProductsFetch().then(() => {
+  console.log('next step');
+});
+*/
+
 export function loadProducts(fun){
-  const xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest(); // membuat Http request dengan callbacks
 
   xhr.addEventListener('load', () => {
     products = JSON.parse(xhr.response).map((productDetails) => { // map => loop di array => return di array baru
