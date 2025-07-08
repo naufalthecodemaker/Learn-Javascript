@@ -11,11 +11,9 @@ describe('test suite: renderOrderSummary function', () => {
   const priceCents1 = 1090;
   const priceCents2 = 2095;
 
-  beforeAll((done) => {
-    loadProductsFetch().then(() => {
-       done();
-    });
-  })
+  beforeAll(async() => {
+    await loadProductsFetch();
+  });
 
   beforeEach(() => { // before each hook yg akan run function sebelum melakukan test (menyusun set up code)
     spyOn(localStorage, 'setItem');

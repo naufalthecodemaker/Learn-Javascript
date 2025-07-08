@@ -107,3 +107,17 @@ export function loadCart(fun){
   xhr.open('GET', 'https://supersimplebackend.dev/cart');
   xhr.send();
 }
+
+// exercise 18h
+export async function loadCartFetch(){
+  const response = await fetch('https://supersimplebackend.dev/cart');
+  const text = await response.text();
+  console.log(text);
+  return text;
+}
+
+// Extra feature: make the cart empty after creating an order.
+export function resetCart() {
+  cart = [];
+  saveToStorage();
+}

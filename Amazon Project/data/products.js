@@ -19,6 +19,7 @@ export class Product{
   name;
   rating;
   priceCents;
+  keywords;
 
   constructor(productDetails){ // utk run setup code, agar bisa dipake di semua product
     this.id = productDetails.id;
@@ -26,6 +27,7 @@ export class Product{
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.keywords = productDetails.keywords;
   }
 
   getStarsURL(){
